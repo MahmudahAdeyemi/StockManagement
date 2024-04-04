@@ -33,7 +33,7 @@ namespace file.Implementation.Repositories
             File.WriteAllText(filePath, json);
         }
 
-         public void Delete(int customerId)
+        public void Delete(int customerId)
         {
             List<Customer>? customers = GetAllCustomers();
             customers?.RemoveAll(c => c.Id == customerId);

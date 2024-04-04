@@ -2,7 +2,7 @@ namespace file.Entities
 {
     public class OrderItem
     {
-        public int Id{get; set;}
+        public int Id{get; private set;} = GenerateUniqueOrderNo();
         public int ProductId{get; set;}
         public double Quantity {get; set;}
         public double UnitPrice {get; set;}
@@ -10,5 +10,12 @@ namespace file.Entities
         public double TotalVat => UnitPrice * Vat/100D * Quantity;
         
         public double TotalPrice => Quantity * UnitPrice + TotalVat;
+
+        private static int GenerateUniqueOrderNo(){
+
+            var rand = new Random();
+            return rand.Next(1, int.MaxValue);
+
+        }
     }
 }
