@@ -11,7 +11,11 @@ namespace file.Entities
 
         public void AddItem(OrderItem item){
             if(_orderItems.Any(p=>p.ProductId == item.ProductId))
-               throw new Exception($"An item with the product id {item.ProductId} already exists");
+            {
+                var product = new Product();
+                product.QuantityAvailable += item.Quantity;
+            }
+            //    throw new Exception($"An item with the product id {item.ProductId} already exists");
             _orderItems.Add(item);
         }
 

@@ -64,6 +64,7 @@ namespace file.Implementation.Services
         public BaseResponse UpdateProduct( ProductRequestModel poductRequestModel)
         {
             var product = _productRepository.GetProductByName(poductRequestModel.Name);
+            _productRepository.Delete(product.Id);
             if (product == null)
             {
                 return new BaseResponse
@@ -72,10 +73,11 @@ namespace file.Implementation.Services
                     Status = false
                 };
             }
-            product.Name = poductRequestModel.Name;
-            product.Description = poductRequestModel.Description;
-            product.UnitOfMeasurement = poductRequestModel.UnitOfMeasurement;
-            product.SellingPrice = poductRequestModel.Price;
+            AddProduct(poductRequestModel);
+            // product.Name = poductRequestModel.Name;
+            // product.Description = poductRequestModel.Description;
+            // product.UnitOfMeasurement = poductRequestModel.UnitOfMeasurement;
+            // product.SellingPrice = poductRequestModel.Price;
             return new BaseResponse
             {
                 Message = "Sucessfully updated",
@@ -110,8 +112,6 @@ namespace file.Implementation.Services
 
         public GetAllProductResponse GetAllProductResponse()
         {
-            
-
             var Product = _productRepository.GetAllProducts();
             if(Product == null)
             {
