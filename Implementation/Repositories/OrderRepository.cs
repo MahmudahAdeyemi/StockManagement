@@ -19,7 +19,7 @@ namespace file.Implementation.Repositories
             SaveOrders(orders);
         }
 
-        public void SaveOrders(List<Order> orders)
+        private void SaveOrders(List<Order> orders)
         {
             var options =  new JsonSerializerOptions{
                 WriteIndented = true

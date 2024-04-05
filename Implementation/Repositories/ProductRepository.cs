@@ -20,7 +20,7 @@ namespace file.Implementation.Repositories
         }
         
 
-        public void SaveProducts(List<Product> products)
+        private void SaveProducts(List<Product> products)
         {
             var options =  new JsonSerializerOptions{
                 WriteIndented = true

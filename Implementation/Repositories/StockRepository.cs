@@ -19,7 +19,7 @@ namespace file.Implementation.Repositories
             SaveStocks(stocks);
         }
 
-        public void SaveStocks(List<Stock> stocks)
+        private void SaveStocks(List<Stock> stocks)
         {
             var options =  new JsonSerializerOptions{
                 WriteIndented = true
@@ -51,12 +51,6 @@ namespace file.Implementation.Repositories
             return GetAllStocks().SingleOrDefault(x => x.Id == id);
         }
 
-        void IStockRepository.SaveStocks(List<Stock> stocks)
-        {
-            throw new NotImplementedException();
-        }
-
         
-
     }
 }
